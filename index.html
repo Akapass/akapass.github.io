@@ -3,42 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ⚠️ MONETAG VERIFICATION TAG (DO NOT REMOVE) -->
     <meta name="monetag" content="60c54a93d3dcebcfbcb94c60f7905a6c">
-    
-    <title>Secure Verification | Step 1 of 2</title>
+    <title>Verification Hub | Secure Access</title>
 
-    <!-- ⚠️ MONETAG IN-PAGE PUSH SCRIPT (This is for the Ads) -->
-    <script src="https://alwingulla.com/88/p.js"></script> 
+    <!-- 1. quge5 Tag (Zone 224216) -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="224216" async data-cfasync="false"></script>
+    
+    <!-- 2. al5sm Tag (Zone 10798493) -->
+    <script>(function(s){s.dataset.zone='10798493',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    
+    <!-- 3. 5gvci Tags (Zone 10798494 & 10798495) -->
+    <script src="https://5gvci.com/act/files/tag.min.js?z=10798494" data-cfasync="false" async></script>
+    <script src="https://5gvci.com/act/files/tag.min.js?z=10798495" data-cfasync="false" async></script>
+    
+    <!-- 4. izcle Vignette (Zone 10798498) - High CPM -->
+    <script>(function(s){s.dataset.zone='10798498',s.src='https://izcle.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    
+    <!-- 5. nap5k Tag (Zone 10798500) -->
+    <script>(function(s){s.dataset.zone='10798500',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --accent: #38bdf8; --text: #f8fafc; }
+        :root { --bg: #020617; --card: #0f172a; --accent: #38bdf8; --text: #f8fafc; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: var(--card); padding: 2.5rem; border-radius: 1.5rem; text-align: center; width: 90%; max-width: 400px; border: 1px solid #334155; }
-        .timer { font-size: 5rem; font-weight: 800; color: var(--accent); margin: 1.5rem 0; }
-        .btn { background: var(--accent); color: #0f172a; border: none; padding: 1.2rem; width: 100%; border-radius: 1rem; font-weight: 700; cursor: pointer; }
-        .btn:disabled { background: #334155; color: #94a3b8; cursor: not-allowed; opacity: 0.5; }
+        .card { background: var(--card); padding: 2.5rem; border-radius: 1.5rem; text-align: center; width: 90%; max-width: 400px; border: 1px solid #1e293b; box-shadow: 0 0 50px rgba(56, 189, 248, 0.1); }
+        .timer { font-size: 6rem; font-weight: 900; color: var(--accent); margin: 1rem 0; text-shadow: 0 0 20px rgba(56, 189, 248, 0.5); }
+        .btn { background: var(--accent); color: #020617; border: none; padding: 1.2rem; width: 100%; border-radius: 1rem; font-weight: 800; cursor: pointer; font-size: 1.2rem; text-transform: uppercase; }
+        .btn:disabled { background: #1e293b; color: #475569; cursor: not-allowed; }
+        .step { color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px; }
     </style>
 </head>
-<body>
+<body onclick="triggerPop()">
 
     <div class="card">
-        <div id="stepLabel" style="color: #94a3b8; font-size: 0.8rem; letter-spacing: 2px;">STEP 1 OF 2</div>
-        <h2 id="title">Unlocking Access</h2>
+        <div class="step" id="stepLabel">STEP 1 OF 2</div>
+        <h2 style="margin: 0.5rem 0;">Verifying Access...</h2>
         <div class="timer" id="timer">30</div>
         <button id="actionBtn" class="btn" disabled>PLEASE WAIT...</button>
+        <p style="font-size: 0.8rem; color: #475569; margin-top: 1.5rem;">Ads help us keep this bot free!</p>
     </div>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const hookUrl = decodeURIComponent(urlParams.get('hook'));
         const botId = urlParams.get('bid');
+        const directLink = "https://omg10.com/4/10798497"; // YOUR HIGH-PAYING DIRECT LINK
 
         let currentStep = 1;
         let timeLeft = 30;
+        let popTriggered = false;
+
         const timerEl = document.getElementById('timer');
         const btnEl = document.getElementById('actionBtn');
+        const stepLabel = document.getElementById('stepLabel');
+
+        // HARSH: Triggers ad when they click anywhere on the page
+        function triggerPop() {
+            if (!popTriggered) {
+                window.open(directLink, '_blank');
+                popTriggered = true;
+            }
+        }
 
         function startTimer() {
             const countdown = setInterval(() => {
@@ -47,36 +71,48 @@
                 if (timeLeft <= 0) {
                     clearInterval(countdown);
                     btnEl.disabled = false;
-                    btnEl.innerText = currentStep === 1 ? "NEXT STEP" : "CLAIM ACCESS NOW";
+                    btnEl.innerText = currentStep === 1 ? "NEXT STEP" : "FINISH VERIFICATION";
                 }
             }, 1000);
         }
 
-        btnEl.onclick = () => {
+        btnEl.onclick = (e) => {
+            e.stopPropagation(); // Prevents double pop
+            // HARSH: Always open ad on button click
+            window.open(directLink, '_blank');
+
             if (currentStep === 1) {
-                // 💡 MONETAG DIRECT LINK (Open ad in new tab)
-                window.open('https://your-monetag-direct-link.com', '_blank');
-                
                 currentStep = 2;
                 timeLeft = 30;
                 btnEl.disabled = true;
                 btnEl.innerText = "WAITING...";
-                document.getElementById('stepLabel').innerText = "STEP 2 OF 2";
+                stepLabel.innerText = "STEP 2 OF 2";
                 timerEl.innerText = "30";
                 startTimer();
             } else {
+                btnEl.disabled = true;
+                btnEl.innerText = "GRANTING ACCESS...";
+                
                 fetch(hookUrl, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({bid: botId})
-                })
-                .then(() => {
-                    document.body.innerHTML = "<h1 style='color: #22c55e'>✅ VERIFIED!</h1><p>Access granted. Return to the bot.</p>";
+                }).then(() => {
+                    document.body.innerHTML = `
+                        <div class="card">
+                            <h1 style="color: #22c55e">✅ SUCCESS!</h1>
+                            <p>You have unlocked access for 24 hours.</p>
+                            <p>Return to the bot now.</p>
+                        </div>`;
                 });
             }
         };
 
-        if (hookUrl) startTimer();
+        if (hookUrl) {
+            startTimer();
+        } else {
+            document.body.innerHTML = "<h1>❌ Invalid Link</h1>";
+        }
     </script>
 </body>
 </html>
